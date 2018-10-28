@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+
+<head>
+	<title>Home</title>	
+	<object th:include="fragments/fragment :: css" th:remove="tag"></object>
+	<object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+
+<body>
+	<nav th:replace="fragments/fragment :: navbar"></nav>
+	<h1>Sukses!</h1>
+	<h3 th:text="'Pegawai dengan NIP ' + ${nipLama} + ' berhasil diubah menjadi ' + ${nipBaru}"></h3>
+</body>
+
+</html>

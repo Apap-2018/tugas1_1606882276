@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+
+<head>
+	<title>Home</title>	
+	<object th:include="fragments/fragment :: css" th:remove="tag"></object>
+	<object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+
+<body>
+	<nav th:replace="fragments/fragment :: navbar"></nav>
+	<div class="container">
+		<div class="jumbotron mb-0" style="background-color:white;">
+			<h2 class="display-4">Sistem Informasi Kepegawaian</h2>
+			<h2 class="lead">Selamat Datang di Sistem Informasi Kepegawaian!</h2>
+		</div>
+		
+		<div class="card">
+		  <div class="card-header">
+		    Lihat Data Pegawai Berdasarkan NIP
+		  </div>
+		  <div class="card-body">
+		    <h5 class="card-title">Masukkan Nomor Induk Pegawai</h5>
+		    <form th:action="@{/pegawai/}" method="GET">
+			    <input class="form-control" type="text" name="nip" />
+			    <button class="btn btn-primary" type="submit" style="margin-top:10px">Lihat</button>
+		    </form>
+		  </div>
+		</div>
+		
+		<div class="card" style="margin-top:10px; margin-bottom:10px">
+		  <div class="card-header">
+		    Lihat Detail Jabatan
+		  </div>
+		  <div class="card-body">
+		    <h5 class="card-title">Pilih Jabatan</h5>
+		    <form th:action="@{/jabatan/view/}" method="GET">
+		    	<select class="form-control" name="idJabatan">
+    			<option th:each="l : ${listJabatan}" th:value="${l.id}" th:text="${l.nama}">
+    			</option>
+				</select>
+			<button class="btn btn-primary" type="submit" style="margin-top:10px">Lihat</button>
+		    </form>
+		  </div>
+	</div>
+	
+		<div class="card" style="margin-top:10px; margin-bottom:10px">
+		  <div class="card-header">
+		    Lihat Pegawai Tertua dan Termuda
+		  </div>
+		  <div class="card-body">
+		    <h5 class="card-title">Lihat Pegawai Termuda dan Tertua</h5>
+		    <form th:action="@{/pegawai/termuda-tertua}" method="GET">
+		    	<select class="form-control" name="idInstansi">
+    			<option th:each="l : ${listInstansi}" th:value="${l.id}" th:text="${l.nama} + ' - ' + ${l.provinsi.nama}">
+    			</option>
+				</select>
+			<button class="btn btn-primary" type="submit" style="margin-top:10px">Lihat</button>
+		    </form>
+		  </div>
+		</div>
+	
+</body>
+
+</html>

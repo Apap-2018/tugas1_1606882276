@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+
+<head>
+	<title>Home</title>	
+	<object th:include="fragments/fragment :: css" th:remove="tag"></object>
+	<object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+
+<body>
+	<nav th:replace="fragments/fragment :: navbar"></nav>
+	<div class="container">
+		<div class="col-xs-6">
+			<table class="table table-striped table-bordered">
+				<h3>Data Pegawai Termuda</h3>
+				<tr>
+					<td>NIP</td>
+					<td th:text="${termuda.nip}"></td>
+				</tr>
+				<tr>
+					<td>Nama</td>
+					<td th:text="${termuda.nama}"></td>
+				</tr>
+				<tr>
+					<td>Tempat Lahir</td>
+					<td th:text="${termuda.tempat_lahir}"></td>
+				</tr>
+				<tr>
+					<td>Tanggal Lahir</td>
+					<td th:text="${termuda.tanggalLahir}"></td>
+				</tr>
+				<tr>
+					<td>Tahun Masuk</td>
+					<td th:text="${termuda.tahunMasuk}"></td>
+				</tr>
+				<tr>
+					<td>Nama Instansi</td>
+					<td th:text="${termuda.instansi.nama} + ' - ' + ${termuda.instansi.provinsi.nama}"></td>
+				</tr>
+				<tr>
+					<td>Jabatan</td>
+					<td>
+						<ul th:each="jabatan : ${jabatannyaTermuda}">
+							<li th:text="${jabatan}"></li>
+						</ul>
+					</td>
+				</tr>
+			</table>
+		</div>
+		
+		<div class="col-xs-6">
+			<table class="table table-striped table-bordered">
+				<h3>Data Pegawai Tertua</h3>
+				<tr>
+					<td>NIP</td>
+					<td th:text="${tertua.nip}"></td>
+				</tr>
+				<tr>
+					<td>Nama</td>
+					<td th:text="${tertua.nama}"></td>
+				</tr>
+				<tr>
+					<td>Tempat Lahir</td>
+					<td th:text="${tertua.tempat_lahir}"></td>
+				</tr>
+				<tr>
+					<td>Tanggal Lahir</td>
+					<td th:text="${tertua.tanggalLahir}"></td>
+				</tr>
+				<tr>
+					<td>Tahun Masuk</td>
+					<td th:text="${tertua.tahunMasuk}"></td>
+				</tr>
+				<tr>
+					<td>Nama Instansi</td>
+					<td th:text="${tertua.instansi.nama} + ' - ' + ${tertua.instansi.provinsi.nama}"></td>
+				</tr>
+				<tr>
+					<td>Jabatan</td>
+					<td>
+						<ul th:each="jabatan : ${jabatannyaTertua}">
+							<li th:text="${jabatan}"></li>
+						</ul>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</body>

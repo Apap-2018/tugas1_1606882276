@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+
+<head>
+	<style>
+		table{
+			width:100%;
+			margin-top:10px;
+		}	
+	</style>
+	<title>Home</title>
+	
+	<link href = "https://cdn.datatables.net/1.10.18/css/dataTables.bootstrap4.min.css">
+	<link href = "https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+
+	<object th:include="fragments/fragment :: css" th:remove="tag"></object>
+	<object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+
+<body>
+	<nav th:replace="fragments/fragment :: navbar"></nav>
+	<div class="container">
+		<table id="example" class="display" style="width:100%">
+		<h2>Daftar Jabatan</h2>
+	        <thead>
+	            <tr>
+	                <th>Nama</th>
+	                <th>Deskripsi</th>
+	                <th>Gaji Pokok</th>
+	            </tr>
+	        </thead>
+	        <tbody>
+				<tr th:each="jabatan: ${listOfJabatan}">
+					<td th:text="${jabatan.nama}"/>
+					<td th:text="${jabatan.deskripsi}"/>
+					<td th:text="${jabatan.gaji_pokok}"/>
+				</tr>
+	        </tbody>
+	
+	    </table>
+    </div>
+    
+    
+    <script src = "https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src = "https://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js"></script>
+	<script src = "https://cdn.datatables.net/1.10.18/js/dataTables.bootstrap4.min.js"></script>
+    <script>
+	    $(document).ready(function() {
+	        $('#example').DataTable( {
+	        } );
+	    } );
+    </script>
+    
+</body>
+
+</html>
